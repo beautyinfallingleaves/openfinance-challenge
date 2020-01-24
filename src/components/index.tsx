@@ -1,3 +1,5 @@
 export * from './App'
 export * from './Timeframe'
+export * from './BestPerformers'
+export * from './AssetSelect'
 export * from './Chart'
