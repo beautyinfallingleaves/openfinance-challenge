@@ -2,11 +2,16 @@ import React from 'react'
 import './App.css'
 import {Box} from '@material-ui/core'
 import {makeStyles} from '@material-ui/core/styles'
-import {Timeframe, BestPerformers, AssetSelect, Chart} from './'
+import {
+  Timeframe,
+  BestPerformers,
+  AssetSelect,
+  Chart
+} from './'
 
 // Define Material-UI styles
 const useStyles = makeStyles(() => ({
-  app: {
+  root: {
     height: '100vh',
     display: 'flex',
     flexDirection: 'column',
@@ -38,12 +43,12 @@ const useStyles = makeStyles(() => ({
   }
 }))
 
-export const App = () => {
+export const App: React.FC = () => {
   // Styling hook
   const classes = useStyles()
 
   return (
-    <Box className={classes.app}>
+    <Box className={classes.root}>
       <Box className={classes.timeframe}>
         <Timeframe />
       </Box>

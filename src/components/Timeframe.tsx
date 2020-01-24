@@ -1,25 +1,26 @@
 import React from 'react'
+import {connect} from 'react-redux'
+import {TIMEFRAME} from '../util'
+import {setTimeframe} from '../store'
 import {
   Box,
   Typography,
   FormControl,
-  InputLabel,
   Select,
   MenuItem,
 } from '@material-ui/core'
+import AccessTime from '@material-ui/icons/AccessTime'
 import {makeStyles} from '@material-ui/core/styles'
 
 // Define Material-UI styles
 const useStyles = makeStyles(theme => ({
   root: {
+    minHeight: '100%',
     paddingLeft: '3%',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-  },
-  clockIcon: {
-
   },
   formControl: {
     margin: theme.spacing(1),
@@ -27,40 +28,49 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export const Timeframe = () => {
+const Timeframe: React.FC = (props: any) => {
   // Styling hook
   const classes = useStyles()
 
-  const [timeframe, setTimeframe] = React.useState('');
+  const {timeframe, setTimeframe} = props
 
-  // const handleChange = event => {
-  //   setTimeframe(event.target.value);
-  // };
+  const handleChange = (event: any) => {
+    // dispatch change to timeframe in store
+    setTimeframe(event.target.value)
+  }
 
   return (
     <Box className={classes.root}>
+      <AccessTime fontSize="large" />
       <Typography variant="h4">TIMEFRAME</Typography>
-      <FormControl variant="outlined" className={classes.formControl}>
-        <InputLabel id="timeframe-label">
-          Time
-        </InputLabel>
+      <FormControl
+        id="form-control"
+        variant="outlined"
+        className={classes.formControl}
+        size="small"
+      >
         <Select
-          labelId="timeframe-label"
           id="timeframe-select"
           value={timeframe}
-          // onChange={handleChange}
-          labelWidth={35}
+          onChange={handleChange}
         >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={'hour'}>Past 60 minutes</MenuItem>
-          <MenuItem value={'day'}>Past day</MenuItem>
-          <MenuItem value={'week'}>Past week</MenuItem>
-          <MenuItem value={'month'}>Past month</MenuItem>
-          <MenuItem value={'year'}>Past year</MenuItem>
+          <MenuItem value={TIMEFRAME.Hour}>Past 60 minutes</MenuItem>
+          <MenuItem value={TIMEFRAME.Day}>Past day</MenuItem>
+          <MenuItem value={TIMEFRAME.Week}>Past week</MenuItem>
+          <MenuItem value={TIMEFRAME.Month}>Past month</MenuItem>
+          <MenuItem value={TIMEFRAME.Year}>Past year</MenuItem>
         </Select>
       </FormControl>
     </Box>
   )
 }
+
+const mapState = (state: any) => ({
+  timeframe: state.timeframe
+})
+
+const mapDispatch = (dispatch: any) => ({
+  setTimeframe: (timeframe: TIMEFRAME) => dispatch(setTimeframe(timeframe))
+})
+
+export default connect(mapState, mapDispatch)(Timeframe)
