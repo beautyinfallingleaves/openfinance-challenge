@@ -30,9 +30,16 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     flexDirection: 'column',
   },
+  assetSelect: {
+    flex: 1,
+  },
+  chart: {
+    flex: 5,
+  }
 }))
 
 export const App = () => {
+  // Styling hook
   const classes = useStyles()
 
   return (
@@ -45,8 +52,12 @@ export const App = () => {
           <BestPerformers />
         </Box>
         <Box className={classes.bodyRightPanel}>
-          <AssetSelect />
-          <Chart />
+          <Box className={classes.assetSelect}>
+            <AssetSelect />
+          </Box>
+          <Box className={classes.chart}>
+            <Chart />
+          </Box>
         </Box>
       </Box>
     </Box>

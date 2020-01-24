@@ -3,8 +3,13 @@ import Highcharts from 'highcharts/highstock'
 import HighchartsReact from 'highcharts-react-official'
 
 const options: Highcharts.Options = {
-  title: {
-      text: 'My chart'
+  chart: {
+    height: 600,
+    backgroundColor: '#10142C',
+    marginTop: 60,
+    marginRight: 60,
+    marginBottom: 60,
+    marginLeft: 60,
   },
   series: [{
       type: 'line',
