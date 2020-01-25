@@ -10,9 +10,7 @@ import {
 } from '@material-ui/core'
 import TrendingUp from '@material-ui/icons/TrendingUp'
 import TrendingDown from '@material-ui/icons/TrendingDown'
-import TrendingFlat from '@material-ui/icons/TrendingFlat'
 import {makeStyles} from '@material-ui/core/styles'
-import classes from '*.module.css'
 
 // Define Material-UI styles
 const useStyles = makeStyles(theme => ({
@@ -75,8 +73,23 @@ const AssetSelect: React.FC = (props: any) => {
         </Select>
       </FormControl>
       <Box className={classes.assetSummary}>
-        <Typography variant="h5">LAST TRADE PRICE</Typography>
-        <Typography variant="h5">CHANGE</Typography>
+        <Box>
+          <Typography variant="h5">LAST TRADE PRICE</Typography>
+          <Typography variant="body1">${selectedAsset.closePrice / 100}</Typography>
+        </Box>
+        <Box>
+          <Typography variant="h5">CHANGE</Typography>
+          {selectedAsset.periodChange > 0 ? (
+            <Typography style={{color: 'green'}} variant="body1">
+              {selectedAsset.periodChange * 100}% <TrendingUp />
+            </Typography>
+          ) : (
+            <Typography style={{color: 'red'}} variant="body1">
+              {selectedAsset.periodChange * 100}% <TrendingDown />
+            </Typography>
+          )}
+          <Typography variant="body1"></Typography>
+        </Box>
       </Box>
     </Box>
   )
