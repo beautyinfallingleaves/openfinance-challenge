@@ -1,5 +1,5 @@
 export * from './App'
 export {default as Timeframe} from './Timeframe'
-export * from './BestPerformers'
+export {default as BestPerformers} from './BestPerformers'
 export * from './AssetSelect'
 export * from './Chart'

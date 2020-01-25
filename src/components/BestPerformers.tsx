@@ -1,9 +1,27 @@
 import React from 'react'
+import {connect} from 'react-redux'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from '@material-ui/core'
 
-export const BestPerformers = () => {
+
+const BestPerformers: React.FC = (props: any) => {
+  const {assets} = props
+
   return (
     <div>
-      BEST PERFORMERS
+      {assets.map((asset: any) => <div>{asset}</div>)}
     </div>
   )
 }
+
+const mapState = (state: any) => ({
+  assets: state.assets,
+})
+
+export default connect(mapState)(BestPerformers)
