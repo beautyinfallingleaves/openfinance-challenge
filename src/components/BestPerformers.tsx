@@ -19,6 +19,7 @@ const useStyles = makeStyles(theme => ({
   },
   tableText: {
     color: 'white',
+    fontWeight: 'bold',
   },
 }))
 

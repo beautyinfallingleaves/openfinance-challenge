@@ -24,7 +24,7 @@ const useStyles = makeStyles(() => ({
     flex: 9,
     display: 'flex',
     flexDirection: 'row',
-    background: '#10142C',
+    background: '#0E172A',
   },
   bodyLeftPanel: {
     flex: 1,

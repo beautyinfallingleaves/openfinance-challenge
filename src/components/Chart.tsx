@@ -5,7 +5,7 @@ import HighchartsReact from 'highcharts-react-official'
 const options: Highcharts.Options = {
   chart: {
     height: 600,
-    backgroundColor: '#10142C',
+    backgroundColor: '#0E172A',
     marginTop: 60,
     marginRight: 60,
     marginBottom: 60,
