@@ -47,8 +47,10 @@ const AssetSelect: React.FC = (props: any) => {
 
   const handleChange = (event: any) => {
     // dispatch change to selectedAsset in store
-    const selectedAsset = assets.filter((asset: any) => asset.id === event.target.value) || {}
-    setSelectedAsset(selectedAsset)
+    const selectedAsset = assets.filter((asset: any) => {
+      return asset.id === event.target.value
+    })
+    setSelectedAsset(selectedAsset[0])
   }
 
   return (
@@ -57,7 +59,7 @@ const AssetSelect: React.FC = (props: any) => {
         id="form-control"
         variant="outlined"
         className={classes.formControl}
-        size="small"
+        size="medium"
       >
         <Select
           className={classes.formContent}
@@ -65,13 +67,11 @@ const AssetSelect: React.FC = (props: any) => {
           value={selectedAsset.id}
           onChange={handleChange}
         >
-          {assets.map((asset: any) => {
+          {assets && assets.map((asset: any) => {
             return (
               <MenuItem key={asset.id} value={asset.id}>{asset.name}</MenuItem>
             )
-          })
-
-          }
+          })}
         </Select>
       </FormControl>
       <Box className={classes.assetSummary}>
