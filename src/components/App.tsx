@@ -28,7 +28,7 @@ const useStyles = makeStyles(() => ({
   },
   bodyLeftPanel: {
     flex: 1,
-    borderRight: '1px solid gray',
+    borderRight: '2px solid gray',
   },
   bodyRightPanel: {
     flex: 2,

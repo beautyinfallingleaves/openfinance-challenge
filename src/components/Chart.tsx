@@ -1,6 +1,7 @@
 import React from 'react'
 import Highcharts from 'highcharts/highstock'
 import HighchartsReact from 'highcharts-react-official'
+import { connect } from 'react-redux'
 
 const options: Highcharts.Options = {
   chart: {
@@ -17,7 +18,7 @@ const options: Highcharts.Options = {
   }]
 }
 
-export const Chart = (props: HighchartsReact.Props) => {
+const Chart = (props: HighchartsReact.Props) => {
   return (
     <div>
       <HighchartsReact
@@ -30,3 +31,8 @@ export const Chart = (props: HighchartsReact.Props) => {
   )
 }
 
+const mapState = (state: any) => ({
+  selecteAsset: state.selectedAsset,
+})
+
+export default connect(mapState)(Chart)
