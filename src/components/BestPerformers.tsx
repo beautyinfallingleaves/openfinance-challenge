@@ -14,12 +14,12 @@ import {makeStyles} from '@material-ui/core/styles'
 // Define Material-UI styles
 const useStyles = makeStyles(theme => ({
   root: {
-    marginLeft: '10%',
-    marginTop: '10%',
+    marginLeft: '7%',
+    marginTop: '7%',
   },
-  table: {
-
-  }
+  tableText: {
+    color: 'white',
+  },
 }))
 
 const BestPerformers: React.FC = (props: any) => {
@@ -31,26 +31,32 @@ const BestPerformers: React.FC = (props: any) => {
   return (
     <Box className={classes.root}>
       <Typography variant="h5">BEST PERFORMERS</Typography>
-      <Table className={classes.table}>
+      <Table>
         <TableHead>
           <TableRow>
-            <TableCell>Asset</TableCell>
-            <TableCell align="right">Open Price</TableCell>
-            <TableCell align="right">Close Price</TableCell>
-            <TableCell align="right">Period Change</TableCell>
+            <TableCell className={classes.tableText}>Asset</TableCell>
+            <TableCell className={classes.tableText} align="right">Open Price</TableCell>
+            <TableCell className={classes.tableText} align="right">Close Price</TableCell>
+            <TableCell className={classes.tableText} align="right">Period Change</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {assets.map((asset: any) => (
-            <TableRow key={asset.id}>
-              <TableCell component="th" scope="row">
-                {asset.name}
-              </TableCell>
-              <TableCell align="right">{asset.openPrice}</TableCell>
-              <TableCell align="right">{asset.closePrice}</TableCell>
-              <TableCell align="right">{asset.periodChange}</TableCell>
-            </TableRow>
-          ))}
+          {assets
+            .sort((a: any, b: any) => b.periodChange - a.periodChange)
+            .filter((asset: any, idx: number) => idx < 3)
+            .map((asset: any) => (
+              <TableRow key={asset.id}>
+                <TableCell className={classes.tableText}>{asset.name}</TableCell>
+                <TableCell className={classes.tableText} align="right">${asset.openPrice / 100}</TableCell>
+                <TableCell className={classes.tableText} align="right">${asset.closePrice / 100}</TableCell>
+                {asset.periodChange > 0 ? (
+                  <TableCell style={{color: 'green'}} align="right">+{asset.periodChange * 100}%</TableCell>
+                ) : (
+                  <TableCell style={{color: 'red'}} align="right">{asset.periodChange * 100}%</TableCell>
+                )}
+              </TableRow>
+            ))
+          }
         </TableBody>
       </Table>
     </Box>

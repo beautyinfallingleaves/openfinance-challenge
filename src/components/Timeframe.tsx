@@ -16,7 +16,7 @@ import {makeStyles} from '@material-ui/core/styles'
 const useStyles = makeStyles(theme => ({
   root: {
     minHeight: '100%',
-    paddingLeft: '3%',
+    paddingLeft: '2%',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-start',
@@ -24,8 +24,11 @@ const useStyles = makeStyles(theme => ({
   },
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 300,
+    minWidth: 180,
   },
+  makeItWhite: {
+    color: 'white',
+  }
 }))
 
 const Timeframe: React.FC = (props: any) => {
@@ -50,6 +53,7 @@ const Timeframe: React.FC = (props: any) => {
         size="small"
       >
         <Select
+          className={classes.makeItWhite}
           id="timeframe-select"
           value={timeframe}
           onChange={handleChange}
