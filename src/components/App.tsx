@@ -43,7 +43,7 @@ const useStyles = makeStyles(() => ({
   }
 }))
 
-export const App: React.FC = () => {
+const App: React.FC = () => {
   // Styling hook
   const classes = useStyles()
 
@@ -68,3 +68,5 @@ export const App: React.FC = () => {
     </Box>
   )
 }
+
+export default App

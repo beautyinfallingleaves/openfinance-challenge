@@ -18,7 +18,7 @@ const options: Highcharts.Options = {
   }]
 }
 
-const Chart = (props: HighchartsReact.Props) => {
+const Chart: React.FC = (props: HighchartsReact.Props) => {
   return (
     <div>
       <HighchartsReact

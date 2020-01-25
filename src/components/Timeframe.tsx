@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(1),
     minWidth: 180,
   },
-  makeItWhite: {
+  formContent: {
     color: 'white',
   }
 }))
@@ -53,7 +53,7 @@ const Timeframe: React.FC = (props: any) => {
         size="small"
       >
         <Select
-          className={classes.makeItWhite}
+          className={classes.formContent}
           id="timeframe-select"
           value={timeframe}
           onChange={handleChange}
