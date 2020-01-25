@@ -18,28 +18,28 @@ export const fetchAssets = () => {
 const initialState: any[] = [
   {
     id: 1,
-    asset: 'OFNT',
+    name: 'OFNT',
     openPrice: 195,
     closePrice: 201,
     periodChange: 0.05,
   },
   {
     id: 2,
-    asset: 'SPICE',
+    name: 'SPICE',
     openPrice: 107,
     closePrice: 108,
     periodChange: 0.025,
   },
   {
     id: 3,
-    asset: '22X',
+    name: '22X',
     openPrice: 125,
     closePrice: 101,
     periodChange: -0.15,
   },
   {
     id: 4,
-    asset: 'BCAP',
+    name: 'BCAP',
     openPrice: 140,
     closePrice: 150,
     periodChange: 0.03,
